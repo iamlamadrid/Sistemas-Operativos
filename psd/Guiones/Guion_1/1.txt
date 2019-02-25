@@ -1,0 +1,92 @@
+1.
+2.No se puede porque no tenemos permisos para escribir en /home.
+cd es un comando interno y pwd externo, porque esta en /bin.
+3.ln -P pepe1 ..
+ln -s /home/diego/temporal/pepe1 /home/diego/
+Que se crea la "copia" pero el enlace se rompe. 2 opciones: Utilizando la ruta absoluta o trabajando en el directorio en el que creamos el enlace
+4.ls -a Muestra todo
+ls -l muestra archivos con sus permisos y ultima fecha de modificacion
+ls -s muestra lo que ocupa cada archivo en bloques
+ls -r muestra ordenado alfabeticamente inverso
+ls -R muestra el contenido de los diretorios
+No puedes hacerlo.Borrariamos el directorio con rm -rf ya que tiene contenido
+5.cp pepe 1 .. && gedit pepe1
+gcc ej5.c && ./a.out
+ej5.c:
+#include <stdio.h>
+int main(){
+	printf("Hello world!");
+	return 0;
+}
+6. ls p{ep,ip}*
+mkdir diego\ hola
+rmdir diego\ hola
+echo cualquier\
+cosa
+7. cal 2017>calendario
+cal 2016>>calendario
+8.(ls -l /root > error )>& error
+Sí, sale el error, porque estamos guardando lo que devuelve y no el error. Guardando tambien el error.
+9.echo hola|tee fichero|wc --chars
+mete hola en fichero y muestra el numero de caracteres que tiene el fichero.
+{ echo casa; more error; } | nl
+Si le quitas las llaves no funciona porque espera una instruccion despues del ultimo ; pero se encuentra con |, habría que borrar el ultimo; para que mostrara casa y despues nos mostrar el documento error con cada linea enumerada
+10. cal 1990 >calendario.txt;grep Febrero calendario.txt
+11. (ls / -R | egrep pepe[[:digit:]]$)
+
+
+12. sudo find / -type s -printf '%d %p\n'|sort -nr|head -5
+busca todos los 5 ficheros mas grandes ordenados de menor a mayor mostrando su tamaño y su nombre
+ls -s | sort -nr | head -5
+13.bash y ps
+ kill -9 6025 (en ese instante el PID era 6025)
+vi->ctrl z->fg 1->bg 1->killall -9 vi
+La diferencia entre foreground y background es que en fg ves el programa y puedes utilizarlo mientras que en bg el proceso si ejecutandose pero no puedes hacer nada con el excepto pasarlo a fg y matarlo
+con ps ya veo que estoy utilizando bash
+14.echo $PS1
+echo $PATH
+echo $PS1|grep '' 
+echo $PATH|grep ''
+PS1="Lo que tu quieras $ "
+En el tcsh no esta definida la variable PS1 porque pertenece a BASH y PATH si que esta porque es comun para todas las shells
+printenv para mostrar todas las variables definidas.
+Para averiguar la shell uso ps para ver cual se esta ejecutando y veo que es BASH
+La terminal que estoy usando la veo con el comando tty
+15.export para crearla despues de haberla metido en .bashrc y unset para eliminarla
+HOLA ='/home/diego/temporal' en .bashrc, source para ejecutar .bashrc, export $HOLA y compruebo con cd que funciona
+16.el .bashrc, con la variable PS1 dandole otro valor nos la modifica, abrimos de nuevo la terminal y ya funciona
+17.alias actualizar='
+		sudo apt-get update &&
+		sudo apt-get upgrade -y &&
+		sudo apt-get dist-upgrade -y &&
+		sudo apt-get install -f &&
+		sudo apt-get autoremove &&
+		sudo apt-get -y autoclean'
+18.for i in `seq 5`; do mkdir vacio$i;done
+19.Captura de vi (sacala tu de un momento)
+20. No, no puedes acceder desde la SHELL(la macro esta en un fichero)
+21.chmod -rw (fichero) 
+No se puede mostrar porque no tienes permisos de lectura.
+22.Para escribir a mi mismo tengo que logearme en dos terminales.
+Con el comando tty vemos en "donde está" la terminal, entonces hacemos la redireccion a lo que nos devuelve ese comando pero en otra terminal para mostrarlo en esa. (hay que sacar capturas, si no puedes hacerlo ya las hago yo)
+
+23.Con solo gcc me genera un warning(8,5K), con -ansi no genera ningun warning ni error(8.5K), con -std=c99 me genera el warning del int(8,5K) y con - Wall tambien el waring del int(8,5K). El a.out tiene el mismo tamaño en todos
+24. ./a.out < datos > resultado.txt
+gcc min.c -o programa -lm
+-g 11k -static 1.1M
+25. gcc main.c cap.c cal.c
+gcc -c cal.c      gcc main.c cap.c cal.o
+gcc partes.c(sin mas, no se que quiere que se haga aqui si compila normal, con warnings)
+26. La diferencia es que no esta incluida la libreria matematica en cal.c y en cal2.c sí
+math.h es la libreria matematica y -lm es para que el compilador sepa que necesita esa libreria matematica
+gcc -c cal2.c -----------> gcc main.c cal2.o cap.c -lm
+27. gcc juego.o mapas.o bichos.o niveles.o -
+Fichero en ubuntu
+28. Que ya no ejecuta todo porque las fechas coinciden. Al cambiar un .c y ejecutar, ejecuta el comando del .c que hemos modificado
+Fichero ej28 
+Fichero ej28-g
+Fichero ej282
+29. Borramos todos los .o
+30. gcc min.c -g -lm para compilar con depuracion
+si compilas sin depuracion, el ddd no te muestra nada(DDD sin depuracion.png, DDD con depuracion.png )
+31.(DDD BP.png)

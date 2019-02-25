@@ -1,0 +1,13 @@
+programa : main.o cap.o  cal2.o
+	gcc -o prog $^ -lm 
+
+cal2.o : cal2.c
+	gcc -c $^ 
+
+main.o : main.c
+	gcc -c $^
+
+cap.o : 
+
+clean:
+	rm -f *.o

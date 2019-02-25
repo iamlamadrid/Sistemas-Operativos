@@ -1,0 +1,17 @@
+juego : libpyshics.a niveles.o bichos.o mapas.o juego.o
+	gcc -o niveles.o bichos.o mapa.o juego.o
+
+niveles.o : niveles.c niveles.h
+	gcc -c niveles.c 
+
+bichos.o : bichos.c bichos.h
+	gcc -c bichos.c
+
+mapas.o : mapas.c mapas.h
+	gcc -c mapas.c
+
+juego.o : juego.c mapas.h bichos.h niveles.h
+	gcc -c juego.c
+
+clean : 
+	rm core
