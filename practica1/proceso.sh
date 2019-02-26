@@ -1,5 +1,8 @@
 #!/bin/bash
-NUM_ITERACIONES=10
+if [ $NUM_ITERACIONES = NULL ] 
+then
+	$NUM_ITERACIONES=10
+fi
 for i in $(seq 1 $NUM_ITERACIONES) ; do
 	./generador > datos$i
 	sleep 1.0
@@ -7,6 +10,6 @@ for i in $(seq 1 $NUM_ITERACIONES) ; do
 done
 for i in $(seq 1 $NUM_ITERACIONES)
 do
-	./filtro 1000 < datos$i > (salida.stdout || filtrado.stderr)
+	./filtro 1000 < datos$i 2>> filtrado.stderr >> salida.stdout
 	echo Filtro[$i] realizado con éxito	
 done

@@ -1,12 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <time.h>
 
 int main(int argc, const char *argv[])
 {
 	int numero;
 	int valor_intervalo;
-
+	srand( time(NULL) );
 	if(argc == 1){
 		valor_intervalo = 100000; // valor predeterminado si no hay parametros
 	}else{
