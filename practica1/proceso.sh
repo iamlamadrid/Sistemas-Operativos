@@ -1,7 +1,7 @@
 #!/bin/bash
-if [ $NUM_ITERACIONES = NULL ] 
+if [ -z "${NUM_ITERACIONES}" ] 
 then
-	$NUM_ITERACIONES=10
+	NUM_ITERACIONES=10
 fi
 for i in $(seq 1 $NUM_ITERACIONES) ; do
 	./generador > datos$i
