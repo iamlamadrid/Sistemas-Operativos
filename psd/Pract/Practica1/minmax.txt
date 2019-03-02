@@ -1,2 +1,0 @@
-Categoria con el valor minimo: 10
-Categoria con el valor maximo: 2
