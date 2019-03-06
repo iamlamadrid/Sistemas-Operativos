@@ -5,13 +5,13 @@
 
 int main(int argc, const char *argv[])
 {
-	int numero;
-	int valor_intervalo;
+	int numero; // numero que se genera aleatoriamente
+	int valor_intervalo; 
 	srand( time(NULL) );
 	if(argc == 1){
 		valor_intervalo = 100000; // valor predeterminado si no hay parametros
 	}else{
-		valor_intervalo = atoi(argv[1]);
+		valor_intervalo = atoi(argv[1]); // cogemos primer parametro para darle valor al rango
 	}
 
 	for (int i = 0; i < 1024; i++)
