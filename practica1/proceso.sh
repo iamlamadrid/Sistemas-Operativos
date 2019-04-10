@@ -4,6 +4,7 @@ if [ -z "${NUM_ITERACIONES}" ]
 then
 	NUM_ITERACIONES=10
 fi
+
 # hacemos el generador num iteraciones con una espera de un segundo
 for i in $(seq 1 $NUM_ITERACIONES) ; do
 	./generador > datos$i
@@ -16,3 +17,5 @@ do
 	./filtro 1000 < datos$i 2>> filtrado.stderr >> salida.stdout
 	echo Filtro[$i] realizado con éxito	
 done 
+echo Numero total de archivos filtrados:
+wc -l filtrado.stderr
