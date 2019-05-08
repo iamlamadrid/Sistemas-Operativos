@@ -7,26 +7,37 @@
 #include <condition_variable>
 #include "constantes.h"
 
+/* 										EXPLICACION:
+	Cada jugador tiene un array de 16 posiciones, y cada posicion cuenta como una ficha.
+	Dentro de cada posicion se haya un entero que identifica la posicion del tablera donde
+	se encuentra dicha ficha.
+	Si alguna de las posiciones del array vale -1 quiere decir que esa ficha ha sido comida.
+*/
+
 // crear array de posiciones de tablero con fichas
 int tablero[TAB];
-// crear array de fichas del jugador 1
+// creamos array de fichas del jugador 1
 int blancas[16];
-int i;
-
-
-// crear array de fichas del jugador 2
+// creamos array de fichas del jugador 2
 int negras[16];
+// creamos los jugadores (hilos)
+pthread_t player1, player2;
 
-
-// hacer metodo que mueva ficha
+int movimiento();
+void empezar_partida();
+int comprobar_resultado();
 
 int main(){
-	for(int i=0; i<16; i++){
-		blancas[i] = i;
+	// empezamos la partida colocando las fichas en el tablero
+	empezar_partida();
+
+	for( int partidas=0; partidas < 100 ; partidas++ ){
+		int control_partida = 0;
+		while(control_partida == 0){
+
+		}
 	}
-	for(int i= 48; i<64; i++){
-		negras[i] = i;
-	}
+
 }
 
 int movimiento(int jugador1[], int jugador2[]){
@@ -60,4 +71,24 @@ int movimiento(int jugador1[], int jugador2[]){
 			}
 			break;
 	}
+}
+
+void empezar_partida(){
+	// 'colocamos' las fichas blancas
+	for(int i=0; i<16; i++){
+		blancas[i] = i;
+	}
+	// 'colocamos' las fichas negras
+	for(int i= 48; i<64; i++){
+		negras[i] = i;
+	}
+}
+
+int comprobar_resultado(int jugador[]){
+	for(int i=0; i<16; i++){
+		if(jugador[i] != -1){
+			return 1;
+		}
+	}
+	return 0;
 }
