@@ -1,0 +1,5 @@
+#!/bin/bash
+for ((i=10; i <= 100; i=i+5))
+do
+	./ajedrez $i >> resultados.txt
+done   
